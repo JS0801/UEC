@@ -21,16 +21,17 @@ define(['N/search', 'N/log'], (search, log) => {
 
             if (!primarySubsidiary) {
                 log.debug('Missing Data', 'Primary Subsidiary is empty');
-                return;
+                return 2;
             }
 
             // ---------------- VENDOR ----------------
             if (recordTypeText === 'vendors' || recordTypeText === 'vendor') {
                 var vendorApprover = getSubsidiaryApprover(primarySubsidiary);
 
+                // if no approver found then approve
                 if (!vendorApprover || !vendorApprover.length) {
-                    log.debug('No Vendor Approver Found', 'No approver found for subsidiary ' + primarySubsidiary);
-                    return;
+                    log.debug('No Vendor Approver Found', 'No approver found for subsidiary ' + primarySubsidiary + '. Auto approving.');
+                    return 2;
                 }
 
                 // if same as current next approver, approve
@@ -46,7 +47,7 @@ define(['N/search', 'N/log'], (search, log) => {
                 log.debug('Vendor Next Approver Set', vendorApprover);
 
                 // if next approver and final approver same then approve
-                if (sameMultiSelect(vendorApprover, finalApprover)) {
+                if (sameMultiSelect(vendorApprover, finalApprover) && finalApprover.length) {
                     log.debug('Vendor Final Approver Matched', 'Returning approval action');
                     return 2;
                 }
@@ -63,28 +64,35 @@ define(['N/search', 'N/log'], (search, log) => {
             var requestedBy = rec.getValue({ fieldId: FLD_REQUESTED_BY });
 
             if (!requestedBy) {
-                log.debug('Missing Data', 'Requested By is empty');
-                return;
+                log.debug('Missing Data', 'Requested By is empty. Auto approving.');
+                return 2;
             }
 
             var requestedBySubsidiary = getEmployeeSubsidiary(requestedBy);
 
             if (!requestedBySubsidiary) {
-                log.debug('Missing Subsidiary', 'Requested By employee subsidiary not found');
-                return;
+                log.debug('Missing Subsidiary', 'Requested By employee subsidiary not found. Auto approving.');
+                return 2;
             }
 
-            var firstApprover = getSubsidiaryApprover(requestedBySubsidiary);
-            var secondApprover = getSubsidiaryApprover(primarySubsidiary);
+            // FLIPPED ORDER
+            var firstApprover = getSubsidiaryApprover(primarySubsidiary);
+            var secondApprover = getSubsidiaryApprover(requestedBySubsidiary);
 
             log.debug('Approver Details', {
-                requestedBySubsidiary: requestedBySubsidiary,
                 primarySubsidiary: primarySubsidiary,
+                requestedBySubsidiary: requestedBySubsidiary,
                 firstApprover: firstApprover,
                 secondApprover: secondApprover,
                 currentNextApprover: currentNextApprover,
                 finalApprover: finalApprover
             });
+
+            // if no approvers found at all then approve
+            if ((!firstApprover || !firstApprover.length) && (!secondApprover || !secondApprover.length)) {
+                log.debug('No Approvers Found', 'No approvers found for either subsidiary. Auto approving.');
+                return 2;
+            }
 
             // if both approvers are same then directly approve
             if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && secondApprover.length) {
@@ -92,7 +100,7 @@ define(['N/search', 'N/log'], (search, log) => {
                 return 2;
             }
 
-            // step 1: if no next approver then assign first approver
+            // step 1: if no next approver then assign first approver, else second approver, else approve
             if (!currentNextApprover.length) {
                 if (firstApprover && firstApprover.length) {
                     rec.setValue({
@@ -100,11 +108,23 @@ define(['N/search', 'N/log'], (search, log) => {
                         value: firstApprover
                     });
                     log.debug('Next Approver Set', 'First approver assigned');
+                    return;
                 }
-                return;
+
+                if (secondApprover && secondApprover.length) {
+                    rec.setValue({
+                        fieldId: FLD_NEXT_APPROVER,
+                        value: secondApprover
+                    });
+                    log.debug('Next Approver Set', 'First approver missing, second approver assigned');
+                    return;
+                }
+
+                log.debug('No Approver To Assign', 'Auto approving');
+                return 2;
             }
 
-            // step 2: if current approver is first approver then assign second approver
+            // step 2: if current approver is first approver then assign second approver, else approve
             if (sameMultiSelect(currentNextApprover, firstApprover) && firstApprover.length) {
                 if (secondApprover && secondApprover.length) {
                     rec.setValue({
@@ -117,8 +137,11 @@ define(['N/search', 'N/log'], (search, log) => {
                         log.debug('Final Approver Matched', 'Returning approval action');
                         return 2;
                     }
+                    return;
                 }
-                return;
+
+                log.debug('No Second Approver Found', 'Auto approving after first approver');
+                return 2;
             }
 
             // if current approver already second approver then approve
@@ -126,6 +149,10 @@ define(['N/search', 'N/log'], (search, log) => {
                 log.debug('Second Approver Already Current', 'Returning approval action');
                 return 2;
             }
+
+            // fallback: if current approver does not match anything, approve
+            log.debug('Fallback', 'Current next approver does not match expected approver chain. Auto approving.');
+            return 2;
 
         } catch (e) {
             log.error('onAction Error', e);
