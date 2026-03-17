@@ -3,7 +3,7 @@
 <CstmrCdtTrfInitn>
 <GrpHdr>
 <MsgId>3</MsgId>
-<CreDtTm>2026-03-17T07:37:33</CreDtTm>
+<CreDtTm>2026-03-17T08:02:25</CreDtTm>
 <NbOfTxs>1</NbOfTxs>
 <CtrlSum>1000.00</CtrlSum>
 <InitgPty>
@@ -14,6 +14,7 @@
 <Id>10667</Id>
 </Othr>
 </OrgId>
+</Id>
 </InitgPty>
 </GrpHdr>
 <PmtInf>
