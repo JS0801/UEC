@@ -3,7 +3,7 @@
 <CstmrCdtTrfInitn>
 <GrpHdr>
 <MsgId>3</MsgId>
-<CreDtTm>2026-03-17T07:32:15</CreDtTm>
+<CreDtTm>2026-03-17T07:37:33</CreDtTm>
 <NbOfTxs>1</NbOfTxs>
 <CtrlSum>1000.00</CtrlSum>
 <InitgPty>
@@ -11,7 +11,7 @@
 <Id>
 <OrgId>
 <Othr>
-<Id>12345678</Id>
+<Id>10667</Id>
 </Othr>
 </OrgId>
 </InitgPty>
@@ -47,7 +47,7 @@
 <DbtrAcct>
 <Id>
 <Othr>
-<Id>8659789888</Id>
+<Id>25605045731</Id>
 </Othr>
 </Id>
 <Ccy>MXN</Ccy>
