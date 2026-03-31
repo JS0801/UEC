@@ -13,6 +13,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
             var rec = scriptContext.newRecord;
 
             var transType = rec.getValue({ fieldId: 'custrecord_type_of_transaction' }); // 2 = Bill Payment, 1 = JE
+           
             var transId = rec.getValue({ fieldId: 'custrecord1436' });
             var requestType = rec.getValue({ fieldId: 'custrecord_type_of_request' });   // for Bill Payment, 1 = Void
             var journalAction = rec.getValue({ fieldId: 'custrecord_journal_actions' }); // for JE, 1 = Reverse
