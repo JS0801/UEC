@@ -14,12 +14,14 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
             var transType = rec.getValue({ fieldId: 'custrecord_type_of_transaction' }); // 2 = Bill Payment, 1 = JE
             var transId = rec.getValue({ fieldId: 'custrecord1436' });
-            var journalAction = rec.getValue({ fieldId: 'custrecord_journal_actions' });
+            var requestType = rec.getValue({ fieldId: 'custrecord_type_of_request' });   // for Bill Payment, 1 = Void
+            var journalAction = rec.getValue({ fieldId: 'custrecord_journal_actions' }); // for JE, 1 = Reverse
             var actionDate = rec.getValue({ fieldId: 'custrecord_date' });
 
             log.debug('INPUT VALUES', {
                 transType: transType,
                 transId: transId,
+                requestType: requestType,
                 journalAction: journalAction,
                 actionDate: actionDate
             });
@@ -34,6 +36,10 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
             // Bill Payment
             if (parseInt(transType, 10) === 2) {
+                if (parseInt(requestType, 10) !== 1) {
+                    return 'Bill Payment request type is not Void, so no action taken.';
+                }
+
                 var voidId = voidBillPayment(transId);
                 log.audit('BILL PAYMENT VOIDED', 'Voided Bill Payment ID: ' + voidId);
                 return 'Bill Payment voided successfully.';
@@ -42,7 +48,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
             // Journal Entry
             if (parseInt(transType, 10) === 1) {
                 if (parseInt(journalAction, 10) !== 1) {
-                    return 'Journal action is not 1, so reversal date was not set.';
+                    return 'Journal action is not Reverse, so no action taken.';
                 }
 
                 var jeId = setReversalDate(transId, actionDate);
