@@ -67,7 +67,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
     function voidBillPayment(billPaymentId) {
         return transaction.void({
-            type: record.Type.BILL_PAYMENT,
+            type: 'vendorpayment',
             id: billPaymentId
         });
     }
