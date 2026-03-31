@@ -36,8 +36,8 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
             }
 
             // Bill Payment
-            if (parseInt(transType, 10) === 2) {
-                if (parseInt(requestType, 10) !== 1) {
+            if (transType == 2) {
+                if (requestType != 2) {
                     return 'Bill Payment request type is not Void, so no action taken.';
                 }
 
@@ -47,7 +47,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
             }
 
             // Journal Entry
-            if (parseInt(transType, 10) === 1) {
+            if (transType == 1) {
                 if (parseInt(journalAction, 10) !== 2) {
                     return 'Journal action is not Reverse, so no action taken.';
                 }
