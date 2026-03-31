@@ -47,7 +47,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
             // Journal Entry
             if (parseInt(transType, 10) === 1) {
-                if (parseInt(journalAction, 10) !== 1) {
+                if (parseInt(journalAction, 10) !== 2) {
                     return 'Journal action is not Reverse, so no action taken.';
                 }
 
