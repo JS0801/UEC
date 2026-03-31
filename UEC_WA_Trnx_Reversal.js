@@ -30,7 +30,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
                 throw 'Transaction ID is missing in custrecord1436';
             }
 
-            if (isEmpty(actionDate)) {
+            if (isEmpty(actionDate) && transType == 1) {
                 throw 'Date is missing in custrecord_date';
             }
 
