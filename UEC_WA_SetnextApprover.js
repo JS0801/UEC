@@ -94,11 +94,22 @@ define(['N/search', 'N/log'], (search, log) => {
                 return 2;
             }
 
-            // if both approvers are same then directly approve
-            if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && secondApprover.length) {
-                log.debug('Auto Approve', 'First approver and second approver are same');
-                return 2;
-            }
+            // if both approvers are same then assign once, then approve on next pass
+if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && secondApprover.length) {
+    if (!currentNextApprover.length) {
+        rec.setValue({
+            fieldId: FLD_NEXT_APPROVER,
+            value: firstApprover
+        });
+        log.debug('Next Approver Set', 'Both approver groups are same, assigned once');
+        return;
+    }
+
+    if (sameMultiSelect(currentNextApprover, firstApprover)) {
+        log.debug('Auto Approve', 'Same approver group already assigned and approved');
+        return 2;
+    }
+}
 
             // step 1: if no next approver then assign first approver, else second approver, else approve
             if (!currentNextApprover.length) {
