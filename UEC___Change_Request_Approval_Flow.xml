@@ -1581,8 +1581,19 @@
           <label>Approve</label>
           <saverecordfirst>T</saverecordfirst>
           <initcondition>
-            <formula></formula>
+            <formula><![CDATA["User" IN ("Employee1")]]></formula>
             <type>VISUAL_BUILDER</type>
+            <parameters>
+              <parameter>
+                <name>User</name>
+                <value>STDUSERUSER</value>
+              </parameter>
+              <parameter>
+                <name>Employee1</name>
+                <selectrecordtype>-4</selectrecordtype>
+                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
+              </parameter>
+            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction1327">
