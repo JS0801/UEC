@@ -628,7 +628,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -638,7 +638,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -653,7 +653,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -663,7 +663,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -678,7 +678,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -688,7 +688,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -703,7 +703,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1") AND ( "Custom Form" IN ("Entry Form1","Entry Form2") OR "Workflow:Type" = 'Vendor' )]]></formula>
+            <formula><![CDATA["Action" IN ("Create/Update1") AND "Custom Form" IN ("Entry Form1","Entry Form2")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -728,10 +728,6 @@
                 <name>Entry Form2</name>
                 <selectrecordtype>-167</selectrecordtype>
                 <value>[scriptid=custform_vendor_form]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Type</name>
-                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -784,7 +780,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1") AND ( "Custom Form" IN ("Entry Form1") OR "Workflow:Type" = '' )]]></formula>
+            <formula><![CDATA["Action" IN ("Create/Update1") AND "Custom Form" IN ("Entry Form1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -804,10 +800,6 @@
                 <name>Entry Form1</name>
                 <selectrecordtype>-167</selectrecordtype>
                 <value>[scriptid=custform_account_form]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Type</name>
-                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -1152,7 +1144,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1162,7 +1154,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -1177,7 +1169,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1187,7 +1179,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -1202,7 +1194,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1")]]></formula>
+            <formula><![CDATA["Action" NOT IN ("Create/Update1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1212,7 +1204,7 @@
               <parameter>
                 <name>Create/Update1</name>
                 <selectrecordtype>[scriptid=customlist_createupdate]</selectrecordtype>
-                <value>[scriptid=customlist_createupdate.val_1078869_11129075_sb1_893]</value>
+                <value>[scriptid=customlist_createupdate.val_1078870_11129075_sb1_228]</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -1227,7 +1219,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1") AND ( "Custom Form" IN ("Entry Form1") OR "Workflow:Type" = 'Account' )]]></formula>
+            <formula><![CDATA["Action" IN ("Create/Update1") AND "Custom Form" IN ("Entry Form1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1248,10 +1240,6 @@
                 <selectrecordtype>-167</selectrecordtype>
                 <value>[scriptid=custform_account_form]</value>
               </parameter>
-              <parameter>
-                <name>Workflow:Type</name>
-                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
-              </parameter>
             </parameters>
           </initcondition>
         </setdisplaytypeaction>
@@ -1265,7 +1253,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1") AND ( "Custom Form" IN ("Entry Form1") OR "Workflow:Type" = 'Employee' )]]></formula>
+            <formula><![CDATA["Action" IN ("Create/Update1") AND "Custom Form" IN ("Entry Form1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1286,10 +1274,6 @@
                 <selectrecordtype>-167</selectrecordtype>
                 <value>[scriptid=custform_employee_form]</value>
               </parameter>
-              <parameter>
-                <name>Workflow:Type</name>
-                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
-              </parameter>
             </parameters>
           </initcondition>
         </setdisplaytypeaction>
@@ -1303,7 +1287,7 @@
           <isinactive>F</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
-            <formula><![CDATA["Action" IN ("Create/Update1") AND ( "Custom Form" IN ("Entry Form1","Entry Form2") OR "Workflow:Type" = 'Vendor' )]]></formula>
+            <formula><![CDATA["Action" IN ("Create/Update1") AND "Custom Form" IN ("Entry Form1","Entry Form2")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1328,10 +1312,6 @@
                 <name>Entry Form2</name>
                 <selectrecordtype>-167</selectrecordtype>
                 <value>[scriptid=custform_317_11129075_101]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Type</name>
-                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
               </parameter>
             </parameters>
           </initcondition>
