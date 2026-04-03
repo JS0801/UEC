@@ -180,7 +180,7 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
         }
       }
 
-      if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal))) {
+      if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal)) && fieldId == 'custrecord_uec_type') {
         rec.setText({
           fieldId: fieldId,
           text: String(finalVal),
