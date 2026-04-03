@@ -145,42 +145,125 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
     }
   }
 
-  // ✅ UPDATED: supports Multi-Select fields
+  // // UPDATED: supports Multi-Select fields
+  // function applyToRecord(data) {
+  //   var rec = currentRecord.get();
+  //   var updated = 0, failed = 0, skipped = 0;
+
+  //   for (var fieldId in data) {
+  //     if (!data.hasOwnProperty(fieldId)) continue;
+
+  //     var v = data[fieldId];
+
+  //     // skip empties (keep your behavior)
+  //     if (v == null || v === '' || (Array.isArray(v) && !v.length)) {
+  //       skipped++;
+  //       continue;
+  //     }
+
+  //     var fieldType = '';
+  //     try {
+  //       var f = rec.getField({ fieldId: fieldId });
+  //       fieldType = (f && f.type) ? String(f.type).toLowerCase() : '';
+  //     } catch (eType) {}
+
+  //     var isMulti = (fieldType === 'multiselect');
+  //     var isList = (fieldType === 'select');
+  //     var finalVal = v;
+
+  //     if (isMulti) {
+  //       finalVal = normalizeToIdArray(v);
+  //       if (!finalVal.length) {
+  //         console.warn('[CL] multiselect normalized to empty, skipping', fieldId, v);
+  //         skipped++;
+  //         continue;
+  //       }
+  //     }
+
+  //     if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal)) && fieldId == 'custrecord_uec_type') {
+  //       rec.setText({
+  //         fieldId: fieldId,
+  //         text: String(finalVal),
+  //         ignoreFieldChange: true
+  //       });
+  //       updated++;
+  //       continue;
+  //     }
+  //     console.log('[CL] setValue attempt', {
+  //       fieldId: fieldId,
+  //       fieldType: fieldType,
+  //       isMulti: isMulti,
+  //       raw: v,
+  //       finalVal: finalVal
+  //     });
+
+  //     try {
+  //       rec.setValue({ fieldId: fieldId, value: finalVal, ignoreFieldChange: true  });
+  //       updated++;
+  //     } catch (e1) {
+  //       // fallback (only for non-multiselect)
+  //       if (isMulti) {
+  //         failed++;
+  //         console.warn('[CL] setValue FAILED (multiselect)', fieldId, finalVal, e1);
+  //         continue;
+  //       }
+  //       try {
+  //         rec.setValue({ fieldId: fieldId, value: String(finalVal), ignoreFieldChange: true });
+  //         updated++;
+  //       } catch (e2) {
+  //         failed++;
+  //         console.warn('[CL] setValue FAILED', fieldId, finalVal, e2);
+  //       }
+  //     }
+  //   }
+
+  //   console.log('[CL] populate done', { updated: updated, skipped: skipped, failed: failed });
+  // }
+
   function applyToRecord(data) {
-    var rec = currentRecord.get();
-    var updated = 0, failed = 0, skipped = 0;
+  var rec = currentRecord.get();
+  var updated = 0, failed = 0, skipped = 0;
 
-    for (var fieldId in data) {
-      if (!data.hasOwnProperty(fieldId)) continue;
+  for (var fieldId in data) {
+    if (!data.hasOwnProperty(fieldId)) continue;
 
-      var v = data[fieldId];
+    var v = data[fieldId];
 
-      // skip empties (keep your behavior)
-      if (v == null || v === '' || (Array.isArray(v) && !v.length)) {
+    // skip empties
+    if (v == null || v === '' || (Array.isArray(v) && !v.length)) {
+      skipped++;
+      continue;
+    }
+
+    var fieldType = '';
+    try {
+      var f = rec.getField({ fieldId: fieldId });
+      fieldType = (f && f.type) ? String(f.type).toLowerCase() : '';
+    } catch (eType) {}
+
+    var isMulti = (fieldType === 'multiselect');
+    var isList = (fieldType === 'select');
+    var finalVal = v;
+
+    if (isMulti) {
+      finalVal = normalizeToIdArray(v);
+      if (!finalVal.length) {
+        console.warn('[CL] multiselect normalized to empty, skipping', fieldId, v);
         skipped++;
         continue;
       }
+    }
 
-      var fieldType = '';
-      try {
-        var f = rec.getField({ fieldId: fieldId });
-        fieldType = (f && f.type) ? String(f.type).toLowerCase() : '';
-      } catch (eType) {}
+    console.log('[CL] setValue attempt', {
+      fieldId: fieldId,
+      fieldType: fieldType,
+      isMulti: isMulti,
+      raw: v,
+      finalVal: finalVal
+    });
 
-      var isMulti = (fieldType === 'multiselect');
-      var isList = (fieldType === 'select');
-      var finalVal = v;
-
-      if (isMulti) {
-        finalVal = normalizeToIdArray(v);
-        if (!finalVal.length) {
-          console.warn('[CL] multiselect normalized to empty, skipping', fieldId, v);
-          skipped++;
-          continue;
-        }
-      }
-
-      if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal)) && fieldId == 'custrecord_uec_type') {
+    try {
+      if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal))) {
         rec.setText({
           fieldId: fieldId,
           text: String(finalVal),
@@ -189,36 +272,37 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
         updated++;
         continue;
       }
-      console.log('[CL] setValue attempt', {
+
+      rec.setValue({
         fieldId: fieldId,
-        fieldType: fieldType,
-        isMulti: isMulti,
-        raw: v,
-        finalVal: finalVal
+        value: finalVal,
+        ignoreFieldChange: true
       });
+      updated++;
+
+    } catch (e1) {
+      if (isMulti) {
+        failed++;
+        console.warn('[CL] setValue FAILED (multiselect)', fieldId, finalVal, e1);
+        continue;
+      }
 
       try {
-        rec.setValue({ fieldId: fieldId, value: finalVal, ignoreFieldChange: true  });
+        rec.setValue({
+          fieldId: fieldId,
+          value: String(finalVal),
+          ignoreFieldChange: true
+        });
         updated++;
-      } catch (e1) {
-        // fallback (only for non-multiselect)
-        if (isMulti) {
-          failed++;
-          console.warn('[CL] setValue FAILED (multiselect)', fieldId, finalVal, e1);
-          continue;
-        }
-        try {
-          rec.setValue({ fieldId: fieldId, value: String(finalVal), ignoreFieldChange: true });
-          updated++;
-        } catch (e2) {
-          failed++;
-          console.warn('[CL] setValue FAILED', fieldId, finalVal, e2);
-        }
+      } catch (e2) {
+        failed++;
+        console.warn('[CL] setValue FAILED', fieldId, finalVal, e2);
       }
     }
-
-    console.log('[CL] populate done', { updated: updated, skipped: skipped, failed: failed });
   }
+
+  console.log('[CL] populate done', { updated: updated, skipped: skipped, failed: failed });
+}
 
   // Accepts: ["41","43"] OR "41,43" OR "[41,43]" OR [41,43]
   function normalizeToIdArray(v) {
