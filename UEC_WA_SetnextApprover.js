@@ -55,7 +55,7 @@ define(['N/search', 'N/log'], (search, log) => {
                     return 2;
                 }
 
-                return;
+                return 1;
             }
 
                         // ---------------- ACCOUNT ----------------
@@ -94,7 +94,7 @@ define(['N/search', 'N/log'], (search, log) => {
                     return 2;
                 }
 
-                return;
+                return 1;
             }
 
             // ---------------- EMPLOYEE ----------------
@@ -144,7 +144,7 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
             value: firstApprover
         });
         log.debug('Next Approver Set', 'Both approver groups are same, assigned once');
-        return;
+        return 1;
     }
 
     if (sameMultiSelect(currentNextApprover, firstApprover)) {
@@ -161,7 +161,7 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
                         value: firstApprover
                     });
                     log.debug('Next Approver Set', 'First approver assigned');
-                    return;
+                    return 1;
                 }
 
                 if (secondApprover && secondApprover.length) {
@@ -170,7 +170,7 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
                         value: secondApprover
                     });
                     log.debug('Next Approver Set', 'First approver missing, second approver assigned');
-                    return;
+                    return 1;
                 }
 
                 log.debug('No Approver To Assign', 'Auto approving');
@@ -190,7 +190,7 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
                         log.debug('Final Approver Matched', 'Returning approval action');
                         return 2;
                     }
-                    return;
+                    return 1;
                 }
 
                 log.debug('No Second Approver Found', 'Auto approving after first approver');
