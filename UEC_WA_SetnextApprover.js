@@ -266,6 +266,7 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
     }
 
     function normalizeToArray(value) {
+        log.debug('value', value)
         if (!value) return [];
 
         if (Object.prototype.toString.call(value) === '[object Array]') {
