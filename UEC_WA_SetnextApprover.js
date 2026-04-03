@@ -9,6 +9,7 @@ define(['N/search', 'N/log'], (search, log) => {
     const FLD_PRIMARY_SUBSIDIARY = 'custrecord_uec_primary_subsidairy';
     const FLD_NEXT_APPROVER      = 'custrecord_uec_next_approver';
     const FLD_FINAL_APPROVER     = 'custrecord_final_approver';
+    const FLD_ACCOUNT_SUBSIDIARIES = 'custrecord_subsidiaries';
 
     function onAction(scriptContext) {
         try {
@@ -55,9 +56,48 @@ define(['N/search', 'N/log'], (search, log) => {
                 return;
             }
 
+                        // ---------------- ACCOUNT ----------------
+            if (recordTypeText === 'accounts' || recordTypeText === 'account') {
+                var accountSubsidiaries = normalizeToArray(rec.getValue({ fieldId: FLD_ACCOUNT_SUBSIDIARIES }));
+                var accountPrimarySubsidiary = accountSubsidiaries.length ? accountSubsidiaries[0] : '';
+
+                if (!accountPrimarySubsidiary) {
+                    log.debug('Missing Data', 'Account Subsidiaries is empty');
+                    return 2;
+                }
+
+                var accountApprover = getSubsidiaryApprover(accountPrimarySubsidiary);
+
+                // if no approver found then approve
+                if (!accountApprover || !accountApprover.length) {
+                    log.debug('No Account Approver Found', 'No approver found for account subsidiary ' + accountPrimarySubsidiary + '. Auto approving.');
+                    return 2;
+                }
+
+                // if same as current next approver, approve
+                if (sameMultiSelect(currentNextApprover, accountApprover)) {
+                    log.debug('Account Auto Approve', 'Current next approver and account approver are same');
+                    return 2;
+                }
+
+                rec.setValue({
+                    fieldId: FLD_NEXT_APPROVER,
+                    value: accountApprover
+                });
+                log.debug('Account Next Approver Set', accountApprover);
+
+                // if next approver and final approver same then approve
+                if (sameMultiSelect(accountApprover, finalApprover) && finalApprover.length) {
+                    log.debug('Account Final Approver Matched', 'Returning approval action');
+                    return 2;
+                }
+
+                return;
+            }
+
             // ---------------- EMPLOYEE ----------------
             if (recordTypeText !== 'employees' && recordTypeText !== 'employee') {
-                log.debug('Skip', 'Record type is not Employee or Vendor');
+                log.debug('Skip', 'Record type is not Employee, Vendor, or Account');
                 return;
             }
 
