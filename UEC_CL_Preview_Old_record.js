@@ -168,6 +168,7 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
       } catch (eType) {}
 
       var isMulti = (fieldType === 'multiselect');
+      var isList = (fieldType === 'select');
       var finalVal = v;
 
       if (isMulti) {
@@ -179,6 +180,15 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
         }
       }
 
+      if (isList && finalVal !== '' && finalVal != null && isNaN(Number(finalVal))) {
+        rec.setText({
+          fieldId: fieldId,
+          text: String(finalVal),
+          ignoreFieldChange: true
+        });
+        updated++;
+        continue;
+      }
       console.log('[CL] setValue attempt', {
         fieldId: fieldId,
         fieldType: fieldType,
@@ -188,7 +198,7 @@ define(['N/currentRecord', 'N/https'], function (currentRecord, https) {
       });
 
       try {
-        rec.setValue({ fieldId: fieldId, value: finalVal });
+        rec.setValue({ fieldId: fieldId, value: finalVal, ignoreFieldChange: true  });
         updated++;
       } catch (e1) {
         // fallback (only for non-multiselect)
