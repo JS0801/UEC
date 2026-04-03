@@ -20,7 +20,7 @@ define(['N/search', 'N/log'], (search, log) => {
             var currentNextApprover = normalizeToArray(rec.getValue({ fieldId: FLD_NEXT_APPROVER }));
             var finalApprover = normalizeToArray(rec.getValue({ fieldId: FLD_FINAL_APPROVER }));
 
-            if (!primarySubsidiary) {
+            if (!primarySubsidiary && !finalApprover) {
                 log.debug('Missing Data', 'Primary Subsidiary is empty');
                 return 2;
             }
