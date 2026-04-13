@@ -48,7 +48,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
             // Journal Entry
             if (transType == 1) {
-                if (parseInt(journalAction, 10) !== 2) {
+                if (parseInt(journalAction, 10) !== 1) {
                     return 'Journal action is not Reverse, so no action taken.';
                 }
 
@@ -67,7 +67,7 @@ define(['N/record', 'N/log', 'N/transaction'], function (record, log, transactio
 
     function voidBillPayment(billPaymentId) {
         return transaction.void({
-            type: 'VENDOR_PAYMENT',
+            type: record.Type.VENDOR_PAYMENT,
             id: billPaymentId
         });
     }
