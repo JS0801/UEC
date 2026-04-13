@@ -112,7 +112,7 @@
           <conditionsavedsearch></conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
-          <field>[scriptid=customrecord_master_approval.custrecord_approval_status]</field>
+          <field>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</field>
           <isinactive>F</isinactive>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
@@ -178,7 +178,7 @@
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <displaytype>HIDDEN</displaytype>
           <eventtypes></eventtypes>
-          <field>[scriptid=customrecord_master_approval.custrecord_approval_status]</field>
+          <field>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</field>
           <isinactive>T</isinactive>
           <issublistfield>F</issublistfield>
           <initcondition>
@@ -1541,7 +1541,7 @@
           <conditionsavedsearch></conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
-          <field>[scriptid=customrecord_master_approval.custrecord_approval_status]</field>
+          <field>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</field>
           <isinactive>F</isinactive>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
@@ -1566,7 +1566,7 @@
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
-          <resultfield>[scriptid=customrecord_master_approval.custrecord_approval_status]</resultfield>
+          <resultfield>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</resultfield>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
           <schedulerecurrence></schedulerecurrence>
@@ -1642,7 +1642,7 @@
             <parameters>
               <parameter>
                 <name>Approval Status</name>
-                <value>[scriptid=customrecord_master_approval.custrecord_approval_status]</value>
+                <value>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</value>
               </parameter>
               <parameter>
                 <name>Approval Status1</name>
@@ -1771,7 +1771,7 @@
             <parameters>
               <parameter>
                 <name>Approval Status</name>
-                <value>[scriptid=customrecord_master_approval.custrecord_approval_status]</value>
+                <value>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</value>
               </parameter>
               <parameter>
                 <name>Approval Status1</name>
@@ -1827,7 +1827,7 @@
           <conditionsavedsearch></conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
-          <field>[scriptid=customrecord_master_approval.custrecord_approval_status]</field>
+          <field>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</field>
           <isinactive>F</isinactive>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
@@ -2065,7 +2065,7 @@
             <parameters>
               <parameter>
                 <name>Approval Status</name>
-                <value>[scriptid=customrecord_master_approval.custrecord_approval_status]</value>
+                <value>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</value>
               </parameter>
               <parameter>
                 <name>Approval Status1</name>
@@ -2089,7 +2089,7 @@
           <conditionsavedsearch></conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
-          <field>[scriptid=customrecord_master_approval.custrecord_approval_status]</field>
+          <field>[scriptid=customrecord_master_approval.custrecord_approval_status_change]</field>
           <isinactive>F</isinactive>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
