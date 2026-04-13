@@ -20,6 +20,7 @@
   </initcondition>
   <workflowcustomfields>
     <workflowcustomfield scriptid="custworkflow1">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -37,6 +38,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow2">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -54,6 +56,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow5">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -71,6 +74,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow30">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -88,6 +92,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow31">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -117,6 +122,7 @@
       </customfieldfilters>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow32">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -134,6 +140,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow33">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -151,6 +158,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow34">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -168,6 +176,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow35">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -185,6 +194,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow37">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -202,6 +212,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow38">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -219,6 +230,7 @@
       <storevalue>T</storevalue>
     </workflowcustomfield>
     <workflowcustomfield scriptid="custworkflow43">
+      <aidescription></aidescription>
       <applyformatting>F</applyformatting>
       <defaultchecked>F</defaultchecked>
       <defaultselection></defaultselection>
@@ -265,7 +277,7 @@
           <valuetext></valuetext>
           <valuetype>STATIC</valuetype>
           <initcondition>
-            <formula><![CDATA["Subsidiary (Main)" IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3","{#Subsidiary#}4","{#Subsidiary#}5","{#Subsidiary#}6","{#Subsidiary#}7","{#Subsidiary#}8","{#Subsidiary#}9","{#Subsidiary#}10","{#Subsidiary#}11","{#Subsidiary#}12","{#Subsidiary#}13","{#Subsidiary#}14","{#Subsidiary#}15","{#Subsidiary#}16","{#Subsidiary#}17","{#Subsidiary#}18","{#Subsidiary#}19","{#Subsidiary#}20","{#Subsidiary#}21")]]></formula>
+            <formula><![CDATA["Subsidiary (Main)" IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3","{#Subsidiary#}4","{#Subsidiary#}5","{#Subsidiary#}6","{#Subsidiary#}7","{#Subsidiary#}8","{#Subsidiary#}9","{#Subsidiary#}10","{#Subsidiary#}11","{#Subsidiary#}12","{#Subsidiary#}13","{#Subsidiary#}14","{#Subsidiary#}15","{#Subsidiary#}16","{#Subsidiary#}17","{#Subsidiary#}18","{#Subsidiary#}19","{#Subsidiary#}20","{#Subsidiary#}21","{#Subsidiary#}22")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -374,6 +386,11 @@
               </parameter>
               <parameter>
                 <name>{#Subsidiary#}21</name>
+                <selectrecordtype>-117</selectrecordtype>
+                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
+              </parameter>
+              <parameter>
+                <name>{#Subsidiary#}22</name>
                 <selectrecordtype>-117</selectrecordtype>
                 <value>[ACCOUNT_SPECIFIC_VALUE]</value>
               </parameter>
@@ -862,65 +879,6 @@
           </initcondition>
         </addbuttonaction>
       </workflowactions>
-      <workflowactions triggertype="BEFORESUBMIT">
-        <workflowactiongroup scriptid="workflowaction1553">
-          <conditionsavedsearch></conditionsavedsearch>
-          <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
-          <eventtypes></eventtypes>
-          <isinactive>F</isinactive>
-          <scheduledelay></scheduledelay>
-          <schedulemode>DELAY</schedulemode>
-          <schedulerecurrence></schedulerecurrence>
-          <scheduletimeofday></scheduletimeofday>
-          <scheduletimeunit></scheduletimeunit>
-          <initcondition>
-            <formula><![CDATA[isEmpty("Reversal Date") = 'F']]></formula>
-            <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>Reversal Date</name>
-                <value>[scriptid=custbody_fam_jrn_reversal_date]</value>
-              </parameter>
-            </parameters>
-          </initcondition>
-          <setfieldvalueaction scriptid="workflowaction1554">
-            <field>STDBODYREVERSALENTRY</field>
-            <isinactive>F</isinactive>
-            <valuechecked>F</valuechecked>
-            <valuedate></valuedate>
-            <valuefield></valuefield>
-            <valueformula></valueformula>
-            <valuejoinfield></valuejoinfield>
-            <valueselect></valueselect>
-            <valuetext></valuetext>
-            <valuetype>STATIC</valuetype>
-          </setfieldvalueaction>
-          <setfieldvalueaction scriptid="workflowaction1555">
-            <field>[scriptid=custbody_fam_jrn_reversal_date]</field>
-            <isinactive>F</isinactive>
-            <valuechecked>F</valuechecked>
-            <valuedate></valuedate>
-            <valuefield></valuefield>
-            <valueformula></valueformula>
-            <valuejoinfield></valuejoinfield>
-            <valueselect></valueselect>
-            <valuetext></valuetext>
-            <valuetype>STATIC</valuetype>
-          </setfieldvalueaction>
-          <setfieldvalueaction scriptid="workflowaction1557">
-            <field>[scriptid=custbody_fam_jrn_reversal_no]</field>
-            <isinactive>F</isinactive>
-            <valuechecked>F</valuechecked>
-            <valuedate></valuedate>
-            <valuefield></valuefield>
-            <valueformula></valueformula>
-            <valuejoinfield></valuejoinfield>
-            <valueselect></valueselect>
-            <valuetext></valuetext>
-            <valuetype>STATIC</valuetype>
-          </setfieldvalueaction>
-        </workflowactiongroup>
-      </workflowactions>
       <workflowactions triggertype="AFTERSUBMIT">
         <setfieldvalueaction scriptid="workflowaction716">
           <clienttriggerfields></clienttriggerfields>
@@ -928,7 +886,7 @@
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <field>STDBODYAPPROVALSTATUS</field>
-          <isinactive>F</isinactive>
+          <isinactive>T</isinactive>
           <scheduledelay></scheduledelay>
           <schedulemode>DELAY</schedulemode>
           <schedulerecurrence></schedulerecurrence>
@@ -1870,6 +1828,7 @@
       </workflowactions>
       <workflowstatecustomfields>
         <workflowstatecustomfield scriptid="custwfstate465">
+          <aidescription></aidescription>
           <applyformatting>F</applyformatting>
           <defaultchecked>F</defaultchecked>
           <defaultselection></defaultselection>
@@ -3018,7 +2977,7 @@
         </addbuttonaction>
         <lockrecordaction scriptid="workflowaction1552">
           <conditionsavedsearch></conditionsavedsearch>
-          <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
+          <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|TAXCALCULATION|USERINTERFACE|WORKBOOKBUILDER</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <initcondition>
@@ -3042,6 +3001,7 @@
       </workflowactions>
       <workflowstatecustomfields>
         <workflowstatecustomfield scriptid="custwfstate466">
+          <aidescription></aidescription>
           <applyformatting>F</applyformatting>
           <defaultchecked>F</defaultchecked>
           <defaultselection></defaultselection>
@@ -3231,6 +3191,7 @@
       </workflowactions>
       <workflowstatecustomfields>
         <workflowstatecustomfield scriptid="custwfstate468">
+          <aidescription></aidescription>
           <applyformatting>F</applyformatting>
           <defaultchecked>F</defaultchecked>
           <defaultselection></defaultselection>
