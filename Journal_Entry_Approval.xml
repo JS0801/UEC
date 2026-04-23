@@ -1117,234 +1117,28 @@
       <workflowactions triggertype="BEFORELOAD">
         <addbuttonaction scriptid="workflowaction717">
           <checkconditionbeforeexecution>T</checkconditionbeforeexecution>
-          <conditionsavedsearch></conditionsavedsearch>
+          <conditionsavedsearch>[scriptid=customsearch_uec_multi_1st_approver_list]</conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <label>Approve</label>
           <saverecordfirst>F</saverecordfirst>
           <initcondition>
-            <formula><![CDATA[(( "User Role" IN ("Role1","Role2","Role3","Role4","Role5","Role6","Role7","Role8","Role9","Role10","Role11","Role12") AND "Subsidiary (Main)" NOT IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3") ) OR ( "Subsidiary (Main)" IN ("{#Subsidiary#}2","{#Subsidiary#}1","{#Subsidiary#}3") AND "User" IN ("Employee1","Employee2") )) AND "User" NOT IN ("Workflow:Created By")]]></formula>
+            <formula></formula>
             <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>User Role</name>
-                <value>STDUSERROLE</value>
-              </parameter>
-              <parameter>
-                <name>Role1</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1430]</value>
-              </parameter>
-              <parameter>
-                <name>Role2</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1432]</value>
-              </parameter>
-              <parameter>
-                <name>Role3</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1429]</value>
-              </parameter>
-              <parameter>
-                <name>Role4</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1431]</value>
-              </parameter>
-              <parameter>
-                <name>Role5</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1435]</value>
-              </parameter>
-              <parameter>
-                <name>Role6</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1646]</value>
-              </parameter>
-              <parameter>
-                <name>Role7</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1706]</value>
-              </parameter>
-              <parameter>
-                <name>Role8</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1705]</value>
-              </parameter>
-              <parameter>
-                <name>Role9</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1658]</value>
-              </parameter>
-              <parameter>
-                <name>Role10</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1436]</value>
-              </parameter>
-              <parameter>
-                <name>Role11</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1824]</value>
-              </parameter>
-              <parameter>
-                <name>Role12</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1825]</value>
-              </parameter>
-              <parameter>
-                <name>Subsidiary (Main)</name>
-                <value>STDBODYSUBSIDIARY</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}1</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}2</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}3</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>User</name>
-                <value>STDUSERUSER</value>
-              </parameter>
-              <parameter>
-                <name>Employee1</name>
-                <selectrecordtype>-4</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>Employee2</name>
-                <selectrecordtype>-4</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Created By</name>
-                <value>[scriptid=customworkflow1.custworkflow2]</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction718">
           <checkconditionbeforeexecution>T</checkconditionbeforeexecution>
-          <conditionsavedsearch></conditionsavedsearch>
+          <conditionsavedsearch>[scriptid=customsearch_uec_multi_1st_approver_list]</conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <label>Reject</label>
           <saverecordfirst>F</saverecordfirst>
           <initcondition>
-            <formula><![CDATA[(( "User Role" IN ("Role1","Role2","Role3","Role4","Role5","Role6","Role7","Role8","Role9","Role10","Role11","Role12") AND "Subsidiary (Main)" NOT IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3") ) OR ( "Subsidiary (Main)" IN ("{#Subsidiary#}2","{#Subsidiary#}3","{#Subsidiary#}1") AND "User" IN ("Employee1","Employee2") )) AND "User" NOT IN ("Workflow:Created By")]]></formula>
+            <formula></formula>
             <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>User Role</name>
-                <value>STDUSERROLE</value>
-              </parameter>
-              <parameter>
-                <name>Role1</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1430]</value>
-              </parameter>
-              <parameter>
-                <name>Role2</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1429]</value>
-              </parameter>
-              <parameter>
-                <name>Role3</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1432]</value>
-              </parameter>
-              <parameter>
-                <name>Role4</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1431]</value>
-              </parameter>
-              <parameter>
-                <name>Role5</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1435]</value>
-              </parameter>
-              <parameter>
-                <name>Role6</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1646]</value>
-              </parameter>
-              <parameter>
-                <name>Role7</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1706]</value>
-              </parameter>
-              <parameter>
-                <name>Role8</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1705]</value>
-              </parameter>
-              <parameter>
-                <name>Role9</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1658]</value>
-              </parameter>
-              <parameter>
-                <name>Role10</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1436]</value>
-              </parameter>
-              <parameter>
-                <name>Role11</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1824]</value>
-              </parameter>
-              <parameter>
-                <name>Role12</name>
-                <selectrecordtype>-118</selectrecordtype>
-                <value>[scriptid=customrole1825]</value>
-              </parameter>
-              <parameter>
-                <name>Subsidiary (Main)</name>
-                <value>STDBODYSUBSIDIARY</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}1</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}2</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>{#Subsidiary#}3</name>
-                <selectrecordtype>-117</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>User</name>
-                <value>STDUSERUSER</value>
-              </parameter>
-              <parameter>
-                <name>Employee1</name>
-                <selectrecordtype>-4</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>Employee2</name>
-                <selectrecordtype>-4</selectrecordtype>
-                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Created By</name>
-                <value>[scriptid=customworkflow1.custworkflow2]</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction1115">
@@ -1988,56 +1782,28 @@
       <workflowactions triggertype="BEFORELOAD">
         <addbuttonaction scriptid="workflowaction743">
           <checkconditionbeforeexecution>T</checkconditionbeforeexecution>
-          <conditionsavedsearch></conditionsavedsearch>
+          <conditionsavedsearch>[scriptid=customsearch_uec_multi_approver_list_2]</conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <label>Approve</label>
           <saverecordfirst>F</saverecordfirst>
           <initcondition>
-            <formula><![CDATA["User" IN ("Next Appr") AND "User" NOT IN ("Workflow:Created By")]]></formula>
+            <formula></formula>
             <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>User</name>
-                <value>STDUSERUSER</value>
-              </parameter>
-              <parameter>
-                <name>Next Appr</name>
-                <value>[scriptid=custbody_nscs_nxtapprover]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Created By</name>
-                <value>[scriptid=customworkflow1.custworkflow2]</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction747">
           <checkconditionbeforeexecution>T</checkconditionbeforeexecution>
-          <conditionsavedsearch></conditionsavedsearch>
+          <conditionsavedsearch>[scriptid=customsearch_uec_multi_approver_list_2]</conditionsavedsearch>
           <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <label>Reject</label>
           <saverecordfirst>F</saverecordfirst>
           <initcondition>
-            <formula><![CDATA["User" IN ("Next Appr") AND "User" NOT IN ("Workflow:Created By")]]></formula>
+            <formula></formula>
             <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>User</name>
-                <value>STDUSERUSER</value>
-              </parameter>
-              <parameter>
-                <name>Next Appr</name>
-                <value>[scriptid=custbody_nscs_nxtapprover]</value>
-              </parameter>
-              <parameter>
-                <name>Workflow:Created By</name>
-                <value>[scriptid=customworkflow1.custworkflow2]</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction1116">
