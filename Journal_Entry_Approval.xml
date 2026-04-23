@@ -277,7 +277,7 @@
           <valuetext></valuetext>
           <valuetype>STATIC</valuetype>
           <initcondition>
-            <formula><![CDATA["Subsidiary (Main)" IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3","{#Subsidiary#}4","{#Subsidiary#}5","{#Subsidiary#}6","{#Subsidiary#}7","{#Subsidiary#}8","{#Subsidiary#}9","{#Subsidiary#}10","{#Subsidiary#}11","{#Subsidiary#}12","{#Subsidiary#}13","{#Subsidiary#}14","{#Subsidiary#}15","{#Subsidiary#}16","{#Subsidiary#}17","{#Subsidiary#}18","{#Subsidiary#}19","{#Subsidiary#}20","{#Subsidiary#}21","{#Subsidiary#}22")]]></formula>
+            <formula><![CDATA["Subsidiary (Main)" IN ("{#Subsidiary#}1","{#Subsidiary#}2","{#Subsidiary#}3","{#Subsidiary#}4","{#Subsidiary#}5","{#Subsidiary#}6","{#Subsidiary#}7","{#Subsidiary#}8","{#Subsidiary#}9","{#Subsidiary#}10","{#Subsidiary#}11","{#Subsidiary#}12","{#Subsidiary#}13","{#Subsidiary#}14","{#Subsidiary#}15","{#Subsidiary#}16","{#Subsidiary#}17","{#Subsidiary#}18","{#Subsidiary#}19","{#Subsidiary#}20","{#Subsidiary#}21","{#Subsidiary#}22","{#Subsidiary#}23")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -391,6 +391,11 @@
               </parameter>
               <parameter>
                 <name>{#Subsidiary#}22</name>
+                <selectrecordtype>-117</selectrecordtype>
+                <value>[ACCOUNT_SPECIFIC_VALUE]</value>
+              </parameter>
+              <parameter>
+                <name>{#Subsidiary#}23</name>
                 <selectrecordtype>-117</selectrecordtype>
                 <value>[ACCOUNT_SPECIFIC_VALUE]</value>
               </parameter>
@@ -1776,14 +1781,8 @@
           <label>Reverse</label>
           <saverecordfirst>F</saverecordfirst>
           <initcondition>
-            <formula><![CDATA[isEmpty("Reversal Date") = 'T']]></formula>
+            <formula></formula>
             <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>Reversal Date</name>
-                <value>STDBODYREVERSALDATE</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </addbuttonaction>
         <addbuttonaction scriptid="workflowaction1524">
@@ -1805,7 +1804,7 @@
           <eventtypes></eventtypes>
           <isinactive>F</isinactive>
           <initcondition>
-            <formula><![CDATA["Type" NOT IN ("Transaction Type1","Transaction Type2")]]></formula>
+            <formula><![CDATA["Type" NOT IN ("Transaction Type1","Transaction Type2") AND "User Role" NOT IN ("Role1")]]></formula>
             <type>VISUAL_BUILDER</type>
             <parameters>
               <parameter>
@@ -1821,6 +1820,15 @@
                 <name>Transaction Type2</name>
                 <selectrecordtype>-100</selectrecordtype>
                 <value>[scriptid=customtransaction_fa_asset_depreciation]</value>
+              </parameter>
+              <parameter>
+                <name>User Role</name>
+                <value>STDUSERROLE</value>
+              </parameter>
+              <parameter>
+                <name>Role1</name>
+                <selectrecordtype>-118</selectrecordtype>
+                <value>ADMINISTRATOR</value>
               </parameter>
             </parameters>
           </initcondition>
@@ -2593,28 +2601,6 @@
           <initcondition>
             <formula></formula>
             <type>VISUAL_BUILDER</type>
-          </initcondition>
-        </workflowtransition>
-        <workflowtransition scriptid="workflowtransition533">
-          <buttonaction></buttonaction>
-          <conditionsavedsearch></conditionsavedsearch>
-          <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
-          <eventtypes></eventtypes>
-          <scheduledelay></scheduledelay>
-          <scheduletimeunit></scheduletimeunit>
-          <tostate>[scriptid=customworkflow1.workflowstate91]</tostate>
-          <triggertype></triggertype>
-          <waitforworkflow></waitforworkflow>
-          <waitforworkflowstate></waitforworkflowstate>
-          <initcondition>
-            <formula><![CDATA[isEmpty("Reversal Date") = 'F']]></formula>
-            <type>VISUAL_BUILDER</type>
-            <parameters>
-              <parameter>
-                <name>Reversal Date</name>
-                <value>STDBODYREVERSALDATE</value>
-              </parameter>
-            </parameters>
           </initcondition>
         </workflowtransition>
       </workflowtransitions>
