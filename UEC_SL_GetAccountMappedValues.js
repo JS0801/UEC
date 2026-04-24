@@ -119,6 +119,7 @@ define(['N/search', 'N/record', 'N/log'], function (search, record, log) {
     if (type === 'account') return 'account';
     if (type === 'employee') return record.Type.EMPLOYEE;
     if (type === 'vendor') return record.Type.VENDOR;
+    if (type === 'change_request_approval_matrix') return 'customrecord_change_request_approval_mat'
     return '';
   }
 
