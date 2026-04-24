@@ -101,7 +101,7 @@ define(['N/search', 'N/log'], (search, log) => {
             }
 
             if (recordTypeText === 'Approval Matrix' || recordTypeText === 'approval matrix') {
-                var matrixApprover = getSubsidiaryApprover(existingMatrix, 'matrix');
+                var matrixApprover = getSubsidiaryApprover(multiSub[0]);
 
                 // if no approver found then approve
                 if (!matrixApprover || !matrixApprover.length) {
@@ -264,21 +264,14 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
         return null;
     }
 
-    function getSubsidiaryApprover(subsidiaryId, isMatrix) {
+    function getSubsidiaryApprover(subsidiaryId) {
         try {
             var approvers = [];
             var filters = [];
-          
-            if (isMatrix) {
-              filters.push(['internalid', 'anyof', subsidiaryId])
-            }else{
-              filters.push(['custrecord_subsidiary', 'anyof', subsidiaryId])
-            }
-            
 
             var subSearch = search.create({
                 type: 'customrecord_change_request_approval_mat',
-                filters: filters,
+                filters: [['custrecord_subsidiary', 'anyof', subsidiaryId]],
                 columns: [
                     search.createColumn({ name: 'custrecord_approver' })
                 ]
