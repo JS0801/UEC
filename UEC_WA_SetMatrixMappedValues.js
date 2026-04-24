@@ -41,15 +41,15 @@ define(['N/runtime', 'N/search', 'N/record', 'N/log'], function (runtime, search
       var result = applyMappings(srcRec, matrixRec, mappings, createNew);
 
       log.debug('ACCESS CHECK', {
-        giveaccess: empRec.getValue({ fieldId: 'giveaccess' }),
-        sendemail: empRec.getValue({ fieldId: 'sendemail' }),
-        email: empRec.getValue({ fieldId: 'email' }),
-        firstname: empRec.getValue({ fieldId: 'firstname' }),
-        lastname: empRec.getValue({ fieldId: 'lastname' }),
-        subsidiary: empRec.getValue({ fieldId: 'subsidiary' })
+        giveaccess: matrixRec.getValue({ fieldId: 'giveaccess' }),
+        sendemail: matrixRec.getValue({ fieldId: 'sendemail' }),
+        email: matrixRec.getValue({ fieldId: 'email' }),
+        firstname: matrixRec.getValue({ fieldId: 'firstname' }),
+        lastname: matrixRec.getValue({ fieldId: 'lastname' }),
+        subsidiary: matrixRec.getValue({ fieldId: 'subsidiary' })
       });
 
-      var savedId = empRec.save({ enableSourcing: true, ignoreMandatoryFields: true });
+      var savedId = matrixRec.save({ enableSourcing: true, ignoreMandatoryFields: true });
 
       log.audit('EMP WFA DONE', {
         mode: mode,
