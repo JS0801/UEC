@@ -2198,8 +2198,14 @@
           <scheduletimeunit></scheduletimeunit>
           <scripttype>[scriptid=customscript_update_matrix_record]</scripttype>
           <initcondition>
-            <formula></formula>
+            <formula><![CDATA["Workflow:Type" = 'Approval Matrix']]></formula>
             <type>VISUAL_BUILDER</type>
+            <parameters>
+              <parameter>
+                <name>Workflow:Type</name>
+                <value>[scriptid=customworkflow_custom_form.custworkflow20]</value>
+              </parameter>
+            </parameters>
           </initcondition>
           <parametersettings>
             <parametersetting>
@@ -2214,6 +2220,31 @@
             </parametersetting>
           </parametersettings>
         </customaction>
+        <setfieldvalueaction scriptid="workflowaction1592">
+          <clienttriggerfields></clienttriggerfields>
+          <conditionsavedsearch></conditionsavedsearch>
+          <contexttypes>ACTION|BANKCONNECTIVITY|BANKSTATEMENTPARSER|BUNDLEINSTALLATION|CLIENT|CSVIMPORT|CUSTOMGLLINES|CUSTOMMASSUPDATE|RECORDACTION|CUSTOMTOOL|DATASETBUILDER|DEBUGGER|EMAILCAPTURE|FICONNECTIVITY|FIPARSER|MAPREDUCE|OCRPLUGIN|OFFLINECLIENT|OTHER|PAYMENTPOSTBACK|PAYMENTGATEWAY|PLATFORMEXTENSION|PORTLET|PROMOTIONS|CONSOLRATEADJUSTOR|RESTWEBSERVICES|RESTLET|ADVANCEDREVREC|SCHEDULED|SDFINSTALLATION|SHIPPINGPARTNERS|WEBSERVICES|SUITELET|TAXCALCULATION|USEREVENT|USERINTERFACE|WORKBOOKBUILDER|WORKFLOW</contexttypes>
+          <eventtypes></eventtypes>
+          <field>[scriptid=customrecord_master_approval.custrecord_uec_next_approver]</field>
+          <isinactive>F</isinactive>
+          <scheduledelay></scheduledelay>
+          <schedulemode>DELAY</schedulemode>
+          <schedulerecurrence></schedulerecurrence>
+          <scheduletimeofday></scheduletimeofday>
+          <scheduletimeunit></scheduletimeunit>
+          <valuechecked>F</valuechecked>
+          <valuedate></valuedate>
+          <valuefield></valuefield>
+          <valueformula></valueformula>
+          <valuejoinfield></valuejoinfield>
+          <valuemultiselect></valuemultiselect>
+          <valuetext></valuetext>
+          <valuetype>STATIC</valuetype>
+          <initcondition>
+            <formula></formula>
+            <type>VISUAL_BUILDER</type>
+          </initcondition>
+        </setfieldvalueaction>
       </workflowactions>
       <workflowactions triggertype="BEFORELOAD">
         <setfieldmandatoryaction scriptid="workflowaction1400">
