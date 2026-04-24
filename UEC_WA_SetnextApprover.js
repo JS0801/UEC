@@ -10,6 +10,7 @@ define(['N/search', 'N/log'], (search, log) => {
     const FLD_NEXT_APPROVER      = 'custrecord_uec_next_approver';
     const FLD_FINAL_APPROVER     = 'custrecord_final_approver';
     const FLD_ACCOUNT_SUBSIDIARIES = 'custrecord_subsidiaries';
+    const FLD_APPROVER_RECORD    = 'custrecord_existing_records';
 
     function onAction(scriptContext) {
         try {
@@ -20,6 +21,8 @@ define(['N/search', 'N/log'], (search, log) => {
             var currentNextApprover = normalizeToArray(rec.getValue({ fieldId: FLD_NEXT_APPROVER }));
             var finalApprover = normalizeToArray(rec.getValue({ fieldId: FLD_FINAL_APPROVER }));
             var multiSub = normalizeToArray(rec.getValue({ fieldId: FLD_ACCOUNT_SUBSIDIARIES }));
+            var existingMatrix = rec.getValue({ fieldId: FLD_APPROVER_RECORD });
+          
             log.debug('multiSub', multiSub)
 
             if (!primarySubsidiary && !multiSub[0]) {
@@ -101,6 +104,36 @@ define(['N/search', 'N/log'], (search, log) => {
             if (recordTypeText !== 'employees' && recordTypeText !== 'employee') {
                 log.debug('Skip', 'Record type is not Employee, Vendor, or Account');
                 return;
+            }
+
+            if (recordTypeText === 'Approval Matrix' || recordTypeText === 'approval matrix') {
+                var matrixApprover = getSubsidiaryApprover(existingMatrix, 'matrix');
+
+                // if no approver found then approve
+                if (!matrixApprover || !matrixApprover.length) {
+                    log.debug('No Matrix Approver Found', 'No approver found for record ' + existingMatrix + '. Auto approving.');
+                    return 2;
+                }
+
+                // if same as current next approver, approve
+                if (sameMultiSelect(currentNextApprover, matrixApprover)) {
+                    log.debug('Matrix Auto Approve', 'Current next approver and Matrix approver are same');
+                    return 2;
+                }
+
+                rec.setValue({
+                    fieldId: FLD_NEXT_APPROVER,
+                    value: matrixApprover
+                });
+                log.debug('Marix Next Approver Set', matrixApprover);
+
+                // if next approver and final approver same then approve
+                if (sameMultiSelect(matrixApprover, finalApprover) && finalApprover.length) {
+                    log.debug('Matrix Final Approver Matched', 'Returning approval action');
+                    return 2;
+                }
+
+                return 1;
             }
 
             var requestedBy = rec.getValue({ fieldId: FLD_REQUESTED_BY });
@@ -229,15 +262,21 @@ if (sameMultiSelect(firstApprover, secondApprover) && firstApprover.length && se
         return null;
     }
 
-    function getSubsidiaryApprover(subsidiaryId) {
+    function getSubsidiaryApprover(subsidiaryId, isMatrix) {
         try {
             var approvers = [];
+            var filters = [];
+          
+            if (isMatrix) {
+              filters.push(['internalid', 'anyof', subsidiaryId])
+            }else{
+              filters.push(['custrecord_subsidiary', 'anyof', subsidiaryId])
+            }
+            
 
             var subSearch = search.create({
                 type: 'customrecord_change_request_approval_mat',
-                filters: [
-                    ['custrecord_subsidiary', 'anyof', subsidiaryId]
-                ],
+                filters: filters,
                 columns: [
                     search.createColumn({ name: 'custrecord_approver' })
                 ]
