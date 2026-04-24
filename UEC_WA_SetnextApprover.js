@@ -100,12 +100,6 @@ define(['N/search', 'N/log'], (search, log) => {
                 return 1;
             }
 
-            // ---------------- EMPLOYEE ----------------
-            if (recordTypeText !== 'employees' && recordTypeText !== 'employee') {
-                log.debug('Skip', 'Record type is not Employee, Vendor, or Account');
-                return;
-            }
-
             if (recordTypeText === 'Approval Matrix' || recordTypeText === 'approval matrix') {
                 var matrixApprover = getSubsidiaryApprover(existingMatrix, 'matrix');
 
@@ -135,6 +129,14 @@ define(['N/search', 'N/log'], (search, log) => {
 
                 return 1;
             }
+
+            // ---------------- EMPLOYEE ----------------
+            if (recordTypeText !== 'employees' && recordTypeText !== 'employee') {
+                log.debug('Skip', 'Record type is not Employee, Vendor, or Account');
+                return;
+            }
+
+            
 
             var requestedBy = rec.getValue({ fieldId: FLD_REQUESTED_BY });
 
