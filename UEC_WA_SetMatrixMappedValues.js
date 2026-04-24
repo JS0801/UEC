@@ -71,12 +71,9 @@ define(['N/runtime', 'N/search', 'N/record', 'N/log'], function (runtime, search
         }
       }
 
-      return 'Employee ' + (createNew ? 'created' : 'updated') +
-        '. EmployeeId=' + savedId +
+      return 'Approval Matrix ' + (createNew ? 'created' : 'updated') +
+        '. Id=' + savedId +
         ' Updated=' + result.updated +
-        ' RolesChanged=' + result.rolesChanged +
-        ' RolesAdded=' + result.rolesAdded +
-        ' RolesRemoved=' + result.rolesRemoved +
         ' Skipped=' + result.skipped +
         ' Failed=' + result.failed;
 
