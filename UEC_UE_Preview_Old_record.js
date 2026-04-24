@@ -10,21 +10,24 @@ define(['N/ui/serverWidget', 'N/runtime', 'N/url', 'N/log'], function (ui, runti
   var FIELD_ACCT = 'custrecord_uec_list_of_accounts';
   var FIELD_EMP  = 'custrecord_existing_employee';
   var FIELD_VEN  = 'custrecord_existing_vendor';
+  var FIELD_CRAM = 'custrecord_existing_records';
 
   // UE params
   var P_FORM_ACCT = '808';
   var P_FORM_EMP  = '810';
   var P_FORM_VEN  = '809';
+  var P_FORM_CRAM = '817';
 
   var P_SEARCH_ACCT = 'custscript_account_search_id';
   var P_SEARCH_EMP  = 'custscript_employee_search';
   var P_SEARCH_VEN  = 'custscript_vendor_search';
+  var P_SEARCH_CRAM = 'custscript_change_request_approval_matri';
 
   var P_SL_SCRIPTID = 'custscript_sl_scriptid';
   var P_SL_DEPLOYID = 'custscript_sl_deployid';
 
   // hidden fields for client
-  var H_TYPE   = 'custpage_uec_target_type';     // account|employee|vendor
+  var H_TYPE   = 'custpage_uec_target_type';     // account|employee|vendor|change_request_approval_matrix
   var H_SEARCH = 'custpage_uec_map_searchid';
   var H_SLURL  = 'custpage_uec_sl_url';
   var H_SEL    = 'custpage_uec_selector_fieldid'; // which selector to watch in client
@@ -44,21 +47,33 @@ define(['N/ui/serverWidget', 'N/runtime', 'N/url', 'N/log'], function (ui, runti
         if (rec.getValue({ fieldId: 'custrecord_uec_list_of_accounts' })) customFormId = 808;
         else if (rec.getValue({ fieldId: 'custrecord_existing_employee' })) customFormId = 810;
         else if (rec.getValue({ fieldId: 'custrecord_existing_vendor' })) customFormId = 809;
+        else if (rec.getValue({ fieldId: 'custrecord_existing_records' })) customFormId = 817;
       }
       var formAcctIds = 808;
       var formEmpIds  = 810;
       var formVenIds  = 809;
+      var formCramIds = 817;
 
       var searchAcct = runtime.getCurrentScript().getParameter({ name: P_SEARCH_ACCT }) || '';
       var searchEmp  = runtime.getCurrentScript().getParameter({ name: P_SEARCH_EMP }) || '';
       var searchVen  = runtime.getCurrentScript().getParameter({ name: P_SEARCH_VEN }) || '';
+      var searchCram = runtime.getCurrentScript().getParameter({ name: P_SEARCH_CRAM }) || '';
 
       var slScriptId = runtime.getCurrentScript().getParameter({ name: P_SL_SCRIPTID }) || '';
       var slDeployId = runtime.getCurrentScript().getParameter({ name: P_SL_DEPLOYID }) || '';
 
-      var targetType = resolveTypeByForm(customFormId, formAcctIds, formEmpIds, formVenIds); // account|employee|vendor|''
-      var selectorFieldId = (targetType === 'employee') ? FIELD_EMP : (targetType === 'vendor') ? FIELD_VEN : FIELD_ACCT;
-      var searchId = (targetType === 'employee') ? searchEmp : (targetType === 'vendor') ? searchVen : searchAcct;
+      var targetType = resolveTypeByForm(customFormId, formAcctIds, formEmpIds, formVenIds, formCramIds); // account|employee|vendor|change_request_approval_matrix|''
+      var selectorFieldId =
+        (targetType === 'employee') ? FIELD_EMP :
+        (targetType === 'vendor') ? FIELD_VEN :
+        (targetType === 'change_request_approval_matrix') ? FIELD_CRAM :
+        FIELD_ACCT;
+
+      var searchId =
+        (targetType === 'employee') ? searchEmp :
+        (targetType === 'vendor') ? searchVen :
+        (targetType === 'change_request_approval_matrix') ? searchCram :
+        searchAcct;
 
       log.debug('UE router', {
         mode: context.type,
@@ -145,12 +160,13 @@ define(['N/ui/serverWidget', 'N/runtime', 'N/url', 'N/log'], function (ui, runti
     }
   }
 
-  function resolveTypeByForm(customFormId, acctList, empList, venList) {
+  function resolveTypeByForm(customFormId, acctList, empList, venList, cramList) {
     var f = String(customFormId || '').trim();
     if (!f) return '';
     if (inCsv(f, acctList)) return 'account';
     if (inCsv(f, empList))  return 'employee';
     if (inCsv(f, venList))  return 'vendor';
+    if (inCsv(f, cramList)) return 'change_request_approval_matrix';
     return '';
   }
 
